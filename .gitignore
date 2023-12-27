@@ -1,6 +1,9 @@
 # Build
 build/**/*
 
+# Cache 
+.cache/**/*
+
 # Others
 .DS_Store
 
