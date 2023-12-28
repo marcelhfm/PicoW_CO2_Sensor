@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(co2 C CXX ASM)
 include(pico_sdk_import.cmake)
+project(co2 C CXX ASM)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_C_STANDARD 11)
@@ -10,8 +10,10 @@ set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 add_executable(co2
-  picow_blink.c
-  ssd1306.c
+  main.c
+  ssd1306/ssd1306.c
+  ssd1306/framebuffer.c
+  ssd1306/display.c
 )
 
 # Uncomment if you want to flash your board via picotool.
