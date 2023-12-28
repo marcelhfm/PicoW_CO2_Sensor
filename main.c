@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdint.h>
 
 #include "pico/cyw43_arch.h"
@@ -14,7 +15,7 @@ typedef struct {
   uint16_t co2_measurement;
   enum STATUS wifi_status;
   enum STATUS sensor_status;
-
+  bool flash;
 } DisplayInfo;
 
 void draw_checkmark(FrameBuffer* fb, int x, int y, enum WriteMode wm) {
@@ -97,13 +98,18 @@ void update_display(DisplayInfo* display_info, FrameBuffer* fb,
   if (display_info->co2_measurement < 400) {
     display_draw_text(fb, "Good", 128 / 3 + 8, 42, wm, rot);
   } else if (display_info->co2_measurement > 2000) {
-    display_draw_text(fb, "!!Critical!!", 128 / 3 - 24, 42, wm, rot);
+    if (display_info->flash) {
+      display_draw_text(fb, "!!Critical!!", 128 / 3 - 24, 42, wm, rot);
+    }
   } else if (display_info->co2_measurement > 1000) {
-    display_draw_text(fb, "!Warning!", 128 / 3 - 10, 42, wm, rot);
+    if (display_info->flash) {
+      display_draw_text(fb, "!Warning!", 128 / 3 - 10, 42, wm, rot);
+    }
   } else if (display_info->co2_measurement > 400) {
     display_draw_text(fb, "Bad", 128 / 3 + 12, 42, wm, rot);
   }
 
+  display_info->flash = !display_info->flash;
   display_send_buffer(fb);
 }
 
@@ -137,13 +143,11 @@ int main() {
   DisplayInfo display_info;
   display_info.wifi_status = STATUS_GOOD;
   display_info.sensor_status = STATUS_BAD;
-  display_info.co2_measurement = 2800;
+  display_info.co2_measurement = 1500;
+  display_info.flash = false;
 
   while (1) {
     update_display(&display_info, &fb, wm, rot);
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
-    sleep_ms(250);
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
-    sleep_ms(4750);
+    sleep_ms(1000);
   }
 }
