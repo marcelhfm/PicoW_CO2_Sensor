@@ -1,14 +1,15 @@
 # Raspberry Pi Pico W based CO2 Sensor
-The Pico W is used to measure the CO2 levels in a room. The value is displayed using a simple LCD display as well as sending the data via MQTT to an external MQTT Broker using the onboard WiFi Chip.
 
-> :warning: A MacOS device has been used as the dev machine, build and toolings might not work on other machines.
+Building a CO2 sensor using a Raspberry Pi Pico W, an SSD1306 OLED display and a CO2 Sensor.
 
-## Functionality 
+## Features 
 
-- Print co2 measurements to SSD1306 OLED display. Connect SDA to GPIO1 and SCL to GPIO2, provide 3.3V power.
-- Send co2 measurements via MQTT to external broker / server
+- Display CO2 measurements on the OLED display 
+- Measurements are also send to an external MQTT broker
 
 ## Build 
+
+> :warning: I developed this project on a Mac. Some toolings will not work on other machines.
 
 Execute the following steps to build the project:
 
@@ -30,3 +31,7 @@ To see the output of printf on the dev machine install minicom on your device `b
 ```
 minicom -b 115200 -o -D /dev/cu.usbmodem1101
 ```
+
+## Contribute
+
+Feel free to contribute, open issues, ask questions or fork this project! :) 
