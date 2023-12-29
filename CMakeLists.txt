@@ -1,31 +1,45 @@
 cmake_minimum_required(VERSION 3.28)
 
+set(PROJECT_NAME "picow_co2_sensor")
+set(BUILD_NUMBER "1")
+
+set(APP_NAME "co2")
+set(APP_VERSION_NUMBER "0.0.2")
+
+set(APP_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/app")
+
+add_compile_definitions($<$<CONFIG:Debug>:DEBUG=1>)
+
+set(ENV{PICO_SDK_PATH} "${CMAKE_SOURCE_DIR/../pico/pico-sdk}")
+set(ENV{PICO_BOARD} "pico_w")
+
+set(FREERTOS_CFG_DIRECTORY "${CMAKE_SOURCE_DIR}/config")
+set(FREERTOS_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/FreeRTOS-Kernel")
+
 include(pico_sdk_import.cmake)
-project(co2 C CXX ASM)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
+project(${PROJECT_NAME}
+    LANGUAGES C CXX ASM
+    DESCRIPTION "PicoW CO2 Sensor"   
+    )
 
-pico_sdk_init()
+  pico_sdk_init()
 
-add_executable(co2
-  main.c
-  ssd1306/ssd1306.c
-  ssd1306/framebuffer.c
-  ssd1306/display.c
+  add_library(FreeRTOS STATIC
+    ${FREERTOS_SRC_DIRECTORY}/event_groups.c
+    ${FREERTOS_SRC_DIRECTORY}/list.c
+    ${FREERTOS_SRC_DIRECTORY}/queue.c
+    ${FREERTOS_SRC_DIRECTORY}/stream_buffer.c
+    ${FREERTOS_SRC_DIRECTORY}/tasks.c
+    ${FREERTOS_SRC_DIRECTORY}/timers.c
+    ${FREERTOS_SRC_DIRECTORY}/portable/MemMang/heap_3.c
+    ${FREERTOS_SRC_DIRECTORY}/portable/GCC/ARM_CM0/port.c
 )
 
-# Uncomment if you want to flash your board via picotool.
-pico_add_extra_outputs(co2)
-pico_enable_stdio_usb(co2 1)
-pico_enable_stdio_uart(co2 0)
-
-target_link_libraries(co2
-  pico_stdlib
-  # Uncomment when using Pico W
-  pico_cyw43_arch_none
-  hardware_i2c
+target_include_directories(FreeRTOS PUBLIC
+    ${FREERTOS_CFG_DIRECTORY}/
+    ${FREERTOS_SRC_DIRECTORY}/include
+    ${FREERTOS_SRC_DIRECTORY}/portable/GCC/ARM_CM0
 )
 
-
+add_subdirectory(${APP_SRC_DIRECTORY})
