@@ -1,12 +1,11 @@
 #ifndef ssd1306_h
 #define ssd1306_h
 
+#include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <string.h>
 
-#include "hardware/gpio.h"
-#include "hardware/i2c.h"
+#include "pico/stdio.h"
 
 // Commands
 #define CMD_SET_CONTRAST 0x81

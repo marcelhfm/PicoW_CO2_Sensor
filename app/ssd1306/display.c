@@ -1,6 +1,10 @@
 #include "display.h"
 
+#include <stdio.h>
+
 #include "font8x8_basic.h"
+#include "pico/stdio.h"
+#include "ssd1306.h"
 
 #define WIDTH 128
 #define HEIGHT 64

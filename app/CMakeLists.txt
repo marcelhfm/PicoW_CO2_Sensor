@@ -9,6 +9,8 @@ add_executable(${APP_NAME}
   ssd1306/ssd1306.c
   ssd1306/framebuffer.c
   ssd1306/display.c
+  tasks/update_display_task.c
+  tasks/read_data_task.c
 )
 
 target_link_libraries(${APP_NAME} LINK_PUBLIC
@@ -16,6 +18,7 @@ target_link_libraries(${APP_NAME} LINK_PUBLIC
   # Uncomment when using Pico W
   pico_cyw43_arch_none
   hardware_i2c
+  hardware_adc
   FreeRTOS
 )
 
