@@ -10,8 +10,8 @@ set(APP_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/app")
 
 add_compile_definitions($<$<CONFIG:Debug>:DEBUG=1>)
 
-set(ENV{PICO_SDK_PATH} "${CMAKE_SOURCE_DIR/../pico/pico-sdk}")
-set(ENV{PICO_BOARD} "pico_w")
+#set(ENV{PICO_SDK_PATH} "${CMAKE_SOURCE_DIR/../pico/pico-sdk}")
+#set(ENV{PICO_BOARD} "pico_w")
 
 set(FREERTOS_CFG_DIRECTORY "${CMAKE_SOURCE_DIR}/config")
 set(FREERTOS_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/FreeRTOS-Kernel")

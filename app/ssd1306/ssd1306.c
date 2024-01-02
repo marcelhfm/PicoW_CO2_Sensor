@@ -1,12 +1,18 @@
-#include "ssd1306.h"
-
-#include <stdbool.h>
-
 #define I2C_PORT i2c0
 #define I2C_SDA_PIN 0
 #define I2C_SCL_PIN 1
 
 #define OLED_ADDRESS 0x3C
+
+#include "ssd1306.h"
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "hardware/gpio.h"
+#include "hardware/i2c.h"
+#include "pico/stdlib.h"
 
 void clear_screen();
 
@@ -15,7 +21,7 @@ void init_i2c() {
   i2c_init(I2C_PORT, 100 * 1000);  // 100 kHz
   gpio_set_function(I2C_SDA_PIN, GPIO_FUNC_I2C);
   gpio_set_function(I2C_SCL_PIN, GPIO_FUNC_I2C);
-  i2c_set_slave_mode(I2C_PORT, false, NULL);
+  i2c_set_slave_mode(I2C_PORT, false, 0);
   printf("init_i2c: Done\n");
 }
 
