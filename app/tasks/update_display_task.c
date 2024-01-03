@@ -1,22 +1,16 @@
+#include "update_display_task.h"
+
+#include <FreeRTOS.h>
+#include <queue.h>
 #include <stdbool.h>
-#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 
+#include "../ssd1306/display.h"
+#include "../ssd1306/framebuffer.h"
 #include "pico/cyw43_arch.h"
-#include "pico/stdlib.h"
-#include "ssd1306/display.h"
-#include "ssd1306/framebuffer.h"
 
-enum STATUS {
-  STATUS_GOOD,
-  STATUS_BAD,
-};
-
-typedef struct {
-  uint16_t co2_measurement;
-  enum STATUS wifi_status;
-  enum STATUS sensor_status;
-  bool flash;
-} DisplayInfo;
+extern QueueHandle_t queue;
 
 void draw_checkmark(FrameBuffer* fb, int x, int y, enum WriteMode wm) {
   display_set_pixel(fb, x + 0, y + 5, wm);
@@ -113,41 +107,36 @@ void update_display(DisplayInfo* display_info, FrameBuffer* fb,
   display_send_buffer(fb);
 }
 
-int main() {
-  stdio_init_all();
-  if (cyw43_arch_init()) {
-    printf("Wi-Fi init failed\n");
-    return -1;
+enum STATUS wifi_status() {
+  int status = cyw43_tcpip_link_status(&cyw43_state, CYW43_ITF_STA);
+
+  if (status != CYW43_LINK_UP) {
+    return STATUS_GOOD;
+  } else {
+    printf("wifi_status: Wifi error: %d", status);
+    return STATUS_BAD;
   }
+}
 
-  // Waiting a bit for serial port to be initialized
-  sleep_ms(3000);
+void update_display_task(void* task_params) {
+  printf("Hello from update_display_task!\n");
+  update_display_params* params = (update_display_params*)task_params;
 
-  init_i2c();
-  i2c_scan();
-
-  oled_init();
-
-  FrameBuffer fb;
-  if (fb_init(&fb) != 0) {
-    printf("main: fb init failed!\n");
-    return -1;
-  };
-  fb_clear(&fb);
-
-  enum WriteMode wm = ADD;
-  enum Rotation rot = deg0;
-
-  uint8_t invert = 0;
+  // Other vars
+  int temp_mC = 0;
 
   DisplayInfo display_info;
   display_info.wifi_status = STATUS_GOOD;
-  display_info.sensor_status = STATUS_BAD;
-  display_info.co2_measurement = 1500;
+  display_info.sensor_status = STATUS_GOOD;
+  display_info.co2_measurement = 0;  // Temp value
   display_info.flash = false;
 
   while (1) {
-    update_display(&display_info, &fb, wm, rot);
-    sleep_ms(1000);
+    if (xQueueReceive(queue, &temp_mC, portMAX_DELAY) == pdPASS) {
+      display_info.wifi_status = wifi_status();
+      display_info.co2_measurement = (int)temp_mC / 1000;
+
+      update_display(&display_info, params->fb, params->wm, params->rot);
+    }
   }
 }

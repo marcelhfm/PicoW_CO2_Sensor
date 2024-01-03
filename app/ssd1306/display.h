@@ -3,10 +3,8 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
 
 #include "framebuffer.h"
-#include "ssd1306.h"
 
 enum WriteMode : const unsigned char {
   // Set pixel on, regardless of state
