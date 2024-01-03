@@ -91,6 +91,8 @@
 /* Define to trap errors during development. */
 #define configASSERT(x)
 
+#define configTOTAL_HEAP_SIZE 102400
+
 /* Optional functions - most linkers will remove unused functions anyway. */
 #define INCLUDE_vTaskPrioritySet 1
 #define INCLUDE_uxTaskPriorityGet 1

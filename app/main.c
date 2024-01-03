@@ -1,9 +1,8 @@
-#include "main.h"
-
 #include <FreeRTOS.h>
 #include <queue.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <task.h>
 
 #include "pico/cyw43_arch.h"
@@ -17,15 +16,41 @@ volatile QueueHandle_t queue = NULL;
 TaskHandle_t read_data_handle = NULL;
 TaskHandle_t update_display_handle = NULL;
 
-int main() {
-  stdio_init_all();
+void init_wifi(const char* ssid, const char* password) {
   if (cyw43_arch_init()) {
     printf("Wi-Fi init failed\n");
+    while (1)
+      ;
+  }
+
+  printf("init_wifi: Connecting to wifi...\n");
+
+  int status =
+      cyw43_arch_wifi_connect_blocking(ssid, password, CYW43_AUTH_WPA2_AES_PSK);
+
+  if (status != 0) {
+    printf("init_wifi: Wi-Fi Connection failed: %d \n", status);
+    // while (1)
+    //;
+  }
+
+  printf("init_wifi: Successfully connected!\n");
+}
+
+int main() {
+  stdio_init_all();
+
+  sleep_ms(2000);  // Wait for serial_port to be initialized
+
+  const char* ssid = WIFI_SSID;
+  const char* password = WIFI_PASSWORD;
+
+  if (!ssid || !password) {
+    printf("main: SSID or Wi-Fi password not provided!\n");
     return -1;
   }
 
-  // Waiting a bit for serial port to be initialized
-  sleep_ms(2000);
+  init_wifi(ssid, password);
 
   // Init display
   init_i2c();
@@ -49,11 +74,11 @@ int main() {
 
   printf("main: Creating Tasks\n");
   BaseType_t read_data_status = xTaskCreate(read_data_task, "READ_DATA_TASK",
-                                            128, NULL, 2, &read_data_handle);
+                                            256, NULL, 2, &read_data_handle);
 
   BaseType_t update_display_status =
-      xTaskCreate(update_display_task, "UPDATE_DISPLAY_TASK", 256,
-                  (void *)&ud_params, 1, &update_display_handle);
+      xTaskCreate(update_display_task, "UPDATE_DISPLAY_TASK", 1024,
+                  (void*)&ud_params, 1, &update_display_handle);
 
   printf("main: Creating queue\n");
   queue = xQueueCreate(5, sizeof(int));
