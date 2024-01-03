@@ -17,7 +17,7 @@ enum STATUS {
 };
 
 typedef struct {
-  float co2_measurement;
+  int co2_measurement;
   enum STATUS wifi_status;
   enum STATUS sensor_status;
   bool flash;

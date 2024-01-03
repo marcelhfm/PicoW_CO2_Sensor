@@ -2,12 +2,13 @@
 
 #include <FreeRTOS.h>
 #include <queue.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "../ssd1306/display.h"
 #include "../ssd1306/framebuffer.h"
-#include "../ssd1306/ssd1306.h"
+#include "pico/cyw43_arch.h"
 
 extern QueueHandle_t queue;
 
@@ -106,6 +107,17 @@ void update_display(DisplayInfo* display_info, FrameBuffer* fb,
   display_send_buffer(fb);
 }
 
+enum STATUS wifi_status() {
+  int status = cyw43_tcpip_link_status(&cyw43_state, CYW43_ITF_STA);
+
+  if (status != CYW43_LINK_UP) {
+    return STATUS_GOOD;
+  } else {
+    printf("wifi_status: Wifi error: %d", status);
+    return STATUS_BAD;
+  }
+}
+
 void update_display_task(void* task_params) {
   printf("Hello from update_display_task!\n");
   update_display_params* params = (update_display_params*)task_params;
@@ -116,15 +128,15 @@ void update_display_task(void* task_params) {
   DisplayInfo display_info;
   display_info.wifi_status = STATUS_GOOD;
   display_info.sensor_status = STATUS_GOOD;
-  display_info.co2_measurement = 69;  // Temp value
+  display_info.co2_measurement = 0;  // Temp value
   display_info.flash = false;
 
   while (1) {
     if (xQueueReceive(queue, &temp_mC, portMAX_DELAY) == pdPASS) {
-      display_info.co2_measurement = temp_mC / 1000;
+      display_info.wifi_status = wifi_status();
+      display_info.co2_measurement = (int)temp_mC / 1000;
 
       update_display(&display_info, params->fb, params->wm, params->rot);
-      printf("update_display_task: Rec data %d\n", temp_mC);
     }
   }
 }

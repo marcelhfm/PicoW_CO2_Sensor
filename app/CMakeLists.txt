@@ -13,13 +13,18 @@ add_executable(${APP_NAME}
   tasks/read_data_task.c
 )
 
+
+target_compile_definitions(${APP_NAME} PRIVATE
+    WIFI_SSID="$ENV{WIFI_SSID}"
+    WIFI_PASSWORD="$ENV{WIFI_PASSWORD}"
+)
+
 target_link_libraries(${APP_NAME} LINK_PUBLIC
   pico_stdlib
-  # Uncomment when using Pico W
-  pico_cyw43_arch_none
   hardware_i2c
   hardware_adc
   FreeRTOS
+  pico_cyw43_arch_lwip_threadsafe_background
 )
 
 # Uncomment if you want to flash your board via picotool.

@@ -19,7 +19,7 @@
 
 extern QueueHandle_t queue;
 
-const TickType_t read_data_delay = 500 / portTICK_PERIOD_MS;
+const TickType_t read_data_delay = 5000 / portTICK_PERIOD_MS;
 
 int read_data() {
   uint16_t raw = adc_read();
@@ -31,7 +31,7 @@ int read_data() {
   int temp_mC = 27000 - (voltage_mV - VOLATAGE_OFFSET) * TEMP_SCALE_FACTOR /
                             TEMP_COEFFICIENT;
 
-  printf("Temperature is: %d.%03d°C\n", temp_mC / TEMP_SCALE_FACTOR,
+  printf("read_data: temperature is: %d.%03d°C\n", temp_mC / TEMP_SCALE_FACTOR,
          temp_mC % TEMP_SCALE_FACTOR);
 
   // Return the temperature in milli-Celsius
