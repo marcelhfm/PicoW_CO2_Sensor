@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <task.h>
 
+#include "i2c/i2c.h"
 #include "pico/cyw43_arch.h"
 #include "pico/stdlib.h"
 #include "ssd1306/display.h"
