@@ -9,13 +9,14 @@
 #include "hardware/adc.h"
 #include "pico/stdlib.h"
 
-#define ADC_VREF 3300  // Reference voltage in millivolts
+#define ADC_VREF 3.3  // Reference voltage in millivolts
 #define ADC_RESOLUTION 4096
 
 // Constants for temperature calculation
-#define TEMP_SCALE_FACTOR 1000
-#define VOLATAGE_OFFSET 706    // Offset in millivolts
-#define TEMP_COEFFICIENT 1721  // Coefficient in microvolts per degree Celsius
+#define TEMP_SCALE_FACTOR 1
+#define VOLTAGE_OFFSET 0.706  // Offset in millivolts
+#define TEMP_COEFFICIENT \
+  0.001721  // Coefficient in microvolts per degree Celsius
 
 extern QueueHandle_t queue;
 
@@ -25,17 +26,16 @@ int read_data() {
   uint16_t raw = adc_read();
 
   // Convert the raw reading to millivolts without using floating point
-  int voltage_mV = (raw * ADC_VREF) / ADC_RESOLUTION;
+  float voltage_mV = raw * (ADC_VREF / ADC_RESOLUTION);
 
   // Calculate the temperature in degrees Celsius scaled by TEMP_SCALE_FACTOR
-  int temp_mC = 27000 - (voltage_mV - VOLATAGE_OFFSET) * TEMP_SCALE_FACTOR /
-                            TEMP_COEFFICIENT;
+  float temp_c =
+      27 - (voltage_mV - VOLTAGE_OFFSET) * TEMP_SCALE_FACTOR / TEMP_COEFFICIENT;
 
-  printf("read_data: temperature is: %d.%03d°C\n", temp_mC / TEMP_SCALE_FACTOR,
-         temp_mC % TEMP_SCALE_FACTOR);
+  printf("read_data: temperature is: %f°C\n", temp_c);
 
   // Return the temperature in milli-Celsius
-  return temp_mC;
+  return temp_c * 1000;
 }
 
 void read_data_task() {
