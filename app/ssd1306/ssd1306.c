@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../i2c/i2c.h"
 #include "hardware/gpio.h"
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
