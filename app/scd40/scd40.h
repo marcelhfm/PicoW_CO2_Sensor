@@ -1,10 +1,15 @@
 #ifndef SCD40_H
 #define SCD40_H
 
+#include <stdbool.h>
 #include <stdint.h>
 
-int scd40_init();
-int scd40_read_measurement(uint16_t* co2, float* temp_c, float* humidity);
+#define SCD40_ADDRESS 0x62
+
+int16_t scd40_init();
+int16_t scd40_read_measurement(uint16_t *co2, int32_t *temp_mc,
+                               int16_t *humidity_m_percent_rh);
+int16_t scd40_get_data_ready_flag(bool *data_ready_flag);
 
 #define CMD_START_PERIODIC_MEASUREMENT 0x21b1  // - duration
 #define CMD_READ_MEASUREMENT 0xec05            // 1ms duration
