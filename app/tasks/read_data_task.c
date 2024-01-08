@@ -29,16 +29,19 @@ void read_data_task() {
   int16_t humidity_m_percent_rh;
 
   while (1) {
-    bool data_ready_flag = false;
+    bool data_ready_flag = true;
 
     retval = scd40_get_data_ready_flag(&data_ready_flag);
 
     if (retval != 0) {
       printf("read_data_task: Error executing get_data_ready_flag: %i\n",
              retval);
+      vTaskDelay(read_data_delay / 5);  // 1000ms
       continue;
     }
     if (!data_ready_flag) {
+      printf("read_data_task: Data was not ready...\n");
+      vTaskDelay(read_data_delay / 5);  // 1000ms
       continue;
     }
 
@@ -51,9 +54,9 @@ void read_data_task() {
       printf("C02: %u ppm\n", co2);
       printf("Temperature: %i\n", temp_mc);
       printf("humidity_m_percent_rh: %i\n", humidity_m_percent_rh);
+      xQueueSendToBack(queue, &co2, 0);
     }
 
-    xQueueSendToBack(queue, &co2, 0);
     vTaskDelay(read_data_delay);
   }
 }

@@ -5,7 +5,8 @@
 
 #include "hardware/i2c.h"
 
-#define I2C_PORT i2c0
+#define I2C0_PORT i2c0
+#define I2C1_PORT i2c1
 #define WORD_SIZE 2
 #define CRC8_POLYNOMIAL 0x31
 #define CRC8_INIT 0xFF
