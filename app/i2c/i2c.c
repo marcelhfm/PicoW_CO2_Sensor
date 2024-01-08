@@ -8,10 +8,11 @@
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
 
-#define I2C_PORT i2c0
+#define I2C0_SDA_PIN 0
+#define I2C0_SCL_PIN 1
 
-#define I2C_SDA_PIN 0
-#define I2C_SCL_PIN 1
+#define I2C1_SDA_PIN 2
+#define I2C1_SCL_PIN 3
 
 int16_t i2c_write(i2c_inst_t *i2c, uint8_t addr, uint8_t *src, size_t len,
                   bool nostop) {
@@ -58,27 +59,45 @@ int16_t i2c_read(i2c_inst_t *i2c, uint8_t addr, uint8_t *dst, size_t len,
 
 void init_i2c() {
   printf("init_i2c: Initializing i2c...\n");
-  i2c_init(I2C_PORT, 100 * 1000);  // 100 kHz
+  i2c_init(I2C0_PORT, 100 * 1000);  // 100 kHz
 
   // SSD1306
-  gpio_set_function(I2C_SDA_PIN, GPIO_FUNC_I2C);
-  gpio_set_function(I2C_SCL_PIN, GPIO_FUNC_I2C);
+  gpio_set_function(I2C0_SDA_PIN, GPIO_FUNC_I2C);
+  gpio_set_function(I2C0_SCL_PIN, GPIO_FUNC_I2C);
 
-  i2c_set_slave_mode(I2C_PORT, false, 0);
+  i2c_init(I2C1_PORT, 100 * 1000);
+
+  // SCD40
+  gpio_set_function(I2C1_SDA_PIN, GPIO_FUNC_I2C);
+  gpio_set_function(I2C1_SCL_PIN, GPIO_FUNC_I2C);
+
+  // i2c_set_slave_mode(I2C_PORT, false, 0);
   printf("init_i2c: Done\n");
 }
 
 void i2c_scan() {
-  printf("Scanning I2C bus...\n");
+  printf("Scanning I2C0 bus...\n");
   uint8_t address;
   uint8_t data;
 
   for (address = 1; address < 128;
        address++) {  // 7-bit addresses from 0x01 to 0x7F
-    int result = i2c_write_blocking(I2C_PORT, address, &data, 1, false);
+    int result = i2c_write_blocking(I2C0_PORT, address, &data, 1, false);
 
     if (result == 1) {
-      printf("I2C device detected at address 0x%02X Result: %d\n", address,
+      printf("I2C0 device detected at address 0x%02X Result: %d\n", address,
+             result);
+    }
+  }
+
+  printf("Scanning I2C1 bus...\n");
+
+  for (address = 1; address < 128;
+       address++) {  // 7-bit addresses from 0x01 to 0x7F
+    int result = i2c_write_blocking(I2C1_PORT, address, &data, 1, false);
+
+    if (result == 1) {
+      printf("I2C1 device detected at address 0x%02X Result: %d\n", address,
              result);
     }
   }
@@ -134,7 +153,7 @@ int16_t i2c_read_data_inplace(uint8_t address, uint8_t *buffer,
     return -1;
   }
 
-  retval = i2c_read(I2C_PORT, address, buffer, size, false);
+  retval = i2c_read(I2C1_PORT, address, buffer, size, false);
   if (retval != 0) {
     return retval;
   }

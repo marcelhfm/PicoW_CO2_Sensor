@@ -15,7 +15,7 @@ void clear_screen();
 
 void oled_command(uint8_t command) {
   uint8_t data[] = {0x00, command};
-  int retval = i2c_write_blocking(I2C_PORT, OLED_ADDRESS, data, 2, false);
+  int retval = i2c_write_blocking(I2C0_PORT, OLED_ADDRESS, data, 2, false);
 
   if (retval == PICO_ERROR_GENERIC) {
     printf("oled_commnad: Error sending command to OLED display.\n");
@@ -79,7 +79,7 @@ void send_data(const uint8_t* data, size_t length) {
   uint8_t data_with_control[length + 1];
   data_with_control[0] = 0x40;
   memcpy(data_with_control + 1, data, length);
-  int retval = i2c_write_blocking(I2C_PORT, OLED_ADDRESS, data_with_control,
+  int retval = i2c_write_blocking(I2C0_PORT, OLED_ADDRESS, data_with_control,
                                   length + 1, false);
 
   if (retval == PICO_ERROR_GENERIC) {

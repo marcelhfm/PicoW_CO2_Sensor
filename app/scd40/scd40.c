@@ -54,7 +54,7 @@ int16_t scd4x_read_measurement_ticks(uint16_t *co2, uint16_t *temperature,
 
   offset = i2c_add_command_to_buffer(&buffer[0], offset, CMD_READ_MEASUREMENT);
 
-  retval = i2c_write(I2C_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
+  retval = i2c_write(I2C1_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
   if (retval != 0) {
     return retval;
   }
@@ -80,7 +80,7 @@ int16_t start_periodic_measurement() {
   offset = i2c_add_command_to_buffer(&buffer[0], offset,
                                      CMD_START_PERIODIC_MEASUREMENT);
 
-  retval = i2c_write(I2C_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
+  retval = i2c_write(I2C1_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
   if (retval != 0) {
     return retval;
   }
@@ -95,7 +95,7 @@ int16_t stop_periodic_measurement() {
   offset = i2c_add_command_to_buffer(&buffer[0], offset,
                                      CMD_STOP_PRIODIC_MEASUREMENT);
 
-  retval = i2c_write(I2C_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
+  retval = i2c_write(I2C1_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
 
   if (retval != 0) {
     return retval;
@@ -114,7 +114,7 @@ int16_t set_altitude(uint16_t altitude) {
 
   offset = i2c_add_uint16_to_buffer(&buffer[0], offset, altitude);
 
-  retval = i2c_write(I2C_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
+  retval = i2c_write(I2C1_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
 
   if (retval != 0) {
     return retval;
@@ -130,7 +130,7 @@ int16_t reinit() {
 
   offset = i2c_add_command_to_buffer(&buffer[0], offset, CMD_REINIT);
 
-  retval = i2c_write(I2C_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
+  retval = i2c_write(I2C1_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
   if (retval != 0) {
     return retval;
   }
@@ -168,6 +168,8 @@ int16_t scd40_init() {
     return retval;
   }
 
+  vTaskDelay(2000 / portTICK_PERIOD_MS);
+
   return 0;
 }
 
@@ -182,8 +184,8 @@ int16_t scd40_read_measurement(uint16_t *co2, int32_t *temp_mc,
     return retval;
   }
 
-  *temp_mc = ((21875 * (int32_t)temperature) << 13) - 45000;
-  *humidity_m_percent_rh = ((12500 * (int32_t)humidity) >> 13);
+  *temp_mc = temperature * 175.0 / 65535.0 - 45.0;
+  *humidity_m_percent_rh = humidity * 100.0 / 65535.0;
   return 0;
 }
 
@@ -196,7 +198,7 @@ int16_t scd40_get_data_ready_flag(bool *data_ready_flag) {
   offset =
       i2c_add_command_to_buffer(&buffer[0], offset, CMD_GET_DATA_READY_STATUS);
 
-  retval = i2c_write(I2C_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
+  retval = i2c_write(I2C1_PORT, SCD40_ADDRESS, &buffer[0], offset, false);
   if (retval != 0) {
     return retval;
   }

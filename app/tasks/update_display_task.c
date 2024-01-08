@@ -3,6 +3,7 @@
 #include <FreeRTOS.h>
 #include <queue.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -123,7 +124,7 @@ void update_display_task(void* task_params) {
   update_display_params* params = (update_display_params*)task_params;
 
   // Other vars
-  int co2 = 0;
+  uint16_t co2 = 0;
 
   DisplayInfo display_info;
   display_info.wifi_status = STATUS_GOOD;
