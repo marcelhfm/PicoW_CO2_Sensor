@@ -4,8 +4,16 @@ Building a CO2 sensor using a Raspberry Pi Pico W, an SSD1306 OLED display and a
 
 ## Features 
 
-- Display CO2 measurements on the OLED display 
-- Measurements are also send to an external MQTT broker
+- Measure CO2, humidity and temperature using a SCD40 CO2 sensor
+- Display CO2 measurements on the SSD1306 OLED display 
+- Measurements are also send to an external MQTT broker (Still in Progress!)
+- freeRTOS (scheduling of tasks, IPC)
+
+## Hardware
+
+- Raspberry Pi Pico W
+- Sensirion SCD40 CO2 Sensor (SCD41 should work as well, without any code changes). Make sure to power the Sensor with 5V, as I experienced issues when only powering with 3.3V!
+- SSD1306 OLED display
 
 ## Build 
 
@@ -17,6 +25,8 @@ Execute the following steps to build the project:
 mkdir build && cd build
 EXPORT PICO_SDK_PATH=<PATH_TO_THE_PICO_SDK>
 EXPORT PICO_BOARD=pico_w
+EXPORT WIFI_SSID=<YOUR_SSID>
+EXPORT WIFI_SSID=<YOUR_WIFI_PASSWORD>
 cmake ..
 make
 
