@@ -20,7 +20,6 @@ typedef struct {
   int co2_measurement;
   enum STATUS wifi_status;
   enum STATUS sensor_status;
-  bool flash;
 } DisplayInfo;
 
 void update_display_task(void* task_params);
