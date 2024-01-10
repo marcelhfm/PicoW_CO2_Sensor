@@ -91,20 +91,17 @@ void update_display(DisplayInfo* display_info, FrameBuffer* fb,
 
   // Status text
   if (display_info->co2_measurement < 400) {
-    display_draw_text(fb, "Good", 128 / 3 + 8, 42, wm, rot);
+    display_draw_text(fb, "Very Good", 128 / 3 - 15, 42, wm, rot);
   } else if (display_info->co2_measurement > 2000) {
-    if (display_info->flash) {
-      display_draw_text(fb, "!!Critical!!", 128 / 3 - 24, 42, wm, rot);
-    }
+    display_draw_text(fb, "!!Critical!!", 128 / 3 - 24, 42, wm, rot);
+  } else if (display_info->co2_measurement > 1500) {
+    display_draw_text(fb, "Bad", 128 / 3 + 13, 42, wm, rot);
   } else if (display_info->co2_measurement > 1000) {
-    if (display_info->flash) {
-      display_draw_text(fb, "!Warning!", 128 / 3 - 10, 42, wm, rot);
-    }
+    display_draw_text(fb, "Okay", 128 / 3 + 11, 42, wm, rot);
   } else if (display_info->co2_measurement > 400) {
-    display_draw_text(fb, "Bad", 128 / 3 + 12, 42, wm, rot);
+    display_draw_text(fb, "Good", 128 / 3 + 11, 42, wm, rot);
   }
 
-  display_info->flash = !display_info->flash;
   display_send_buffer(fb);
 }
 
@@ -130,7 +127,6 @@ void update_display_task(void* task_params) {
   display_info.wifi_status = STATUS_GOOD;
   display_info.sensor_status = STATUS_GOOD;
   display_info.co2_measurement = 0;  // Temp value
-  display_info.flash = false;
 
   update_display(&display_info, params->fb, params->wm, params->rot);
   while (1) {
