@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 
-#include <cstdint>
-
 bool wifi_init();
 
 bool wifi_join(const char *sid, const char *password, uint8_t retries);
