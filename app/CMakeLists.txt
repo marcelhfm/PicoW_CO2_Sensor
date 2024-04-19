@@ -26,7 +26,11 @@ target_link_libraries(${APP_NAME} LINK_PUBLIC
   pico_stdlib
   hardware_i2c
   hardware_adc
-  FreeRTOS
+  coreMQTT
+  coreMQTTAgent
+  FreeRTOS-Kernel-Heap4              # FreeRTOS kernel and dynamic heap
+  FREERTOS_PORT                      # FreeRTOS config files
+  LWIP_PORT           
   pico_cyw43_arch_lwip_threadsafe_background
 )
 

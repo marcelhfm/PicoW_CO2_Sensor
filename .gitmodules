@@ -1,3 +1,9 @@
 [submodule "FreeRTOS-Kernel"]
 	path = FreeRTOS-Kernel
 	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
+[submodule "coreMQTT"]
+	path = coreMQTT
+	url = git@github.com:FreeRTOS/coreMQTT.git
+[submodule "coreMQTT-Agent"]
+	path = coreMQTT-Agent
+	url = git@github.com:FreeRTOS/coreMQTT-Agent.git

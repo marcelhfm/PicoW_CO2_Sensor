@@ -13,8 +13,18 @@ add_compile_definitions($<$<CONFIG:Debug>:DEBUG=1>)
 #set(ENV{PICO_SDK_PATH} "${CMAKE_SOURCE_DIR/../pico/pico-sdk}")
 #set(ENV{PICO_BOARD} "pico_w")
 
-set(FREERTOS_CFG_DIRECTORY "${CMAKE_SOURCE_DIR}/config")
-set(FREERTOS_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/FreeRTOS-Kernel")
+set(FREERTOS_KERNEL_PATH "${CMAKE_SOURCE_DIR}/FreeRTOS-Kernel")
+
+SET(FREERTOS_CONFIG_FILE_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/config/FreeRTOS-Kernel" CACHE STRING "Local Config")
+
+set(CORE_MQTT_PATH "${CMAKE_SOURCE_DIR}/coreMQTT")
+set(COREMQTT_PORT_PATH ${CMAKE_CURRENT_LIST_DIR}/config/CoreMQTT) # coreMQTT config files
+
+set(COREMQTT_AGENT_PORT_PATH ${CMAKE_CURRENT_LIST_DIR}/config/CoreMQTT-Agent) # coreMQTT config files
+set(CORE_MQTT_AGENT_PATH "${CMAKE_SOURCE_DIR}/coreMQTT-Agent")
+
+include(lwip_import.cmake) # lwip config files
+include_directories("${FREERTOS_CONFIG_FILE_DIRECTORY}") # FreeRTOS config files
 
 include(pico_sdk_import.cmake)
 
@@ -25,21 +35,5 @@ project(${PROJECT_NAME}
 
   pico_sdk_init()
 
-  add_library(FreeRTOS STATIC
-    ${FREERTOS_SRC_DIRECTORY}/event_groups.c
-    ${FREERTOS_SRC_DIRECTORY}/list.c
-    ${FREERTOS_SRC_DIRECTORY}/queue.c
-    ${FREERTOS_SRC_DIRECTORY}/stream_buffer.c
-    ${FREERTOS_SRC_DIRECTORY}/tasks.c
-    ${FREERTOS_SRC_DIRECTORY}/timers.c
-    ${FREERTOS_SRC_DIRECTORY}/portable/MemMang/heap_3.c
-    ${FREERTOS_SRC_DIRECTORY}/portable/GCC/ARM_CM0/port.c
-)
-
-target_include_directories(FreeRTOS PUBLIC
-    ${FREERTOS_CFG_DIRECTORY}/
-    ${FREERTOS_SRC_DIRECTORY}/include
-    ${FREERTOS_SRC_DIRECTORY}/portable/GCC/ARM_CM0
-)
-
-add_subdirectory(${APP_SRC_DIRECTORY})
+# Initialize all other external libs & dependencies
+include(FreeRTOS_Kernel_import.cmake) # Configure FreeRTOS Kernel

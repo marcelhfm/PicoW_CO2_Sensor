@@ -11,7 +11,6 @@
 #include "pico/stdlib.h"
 #include "ssd1306/display.h"
 #include "ssd1306/ssd1306.h"
-#include "tasks/read_data_task.h"
 #include "tasks/update_display_task.h"
 
 // Check these definitions where added from the makefile
@@ -96,7 +95,7 @@ int main() {
     printf("main: Starting scheduler!\n");
     vTaskStartScheduler();
   } else {
-    printf("main: Unable to start scheduler! RD: %s UD: %s", read_data_status,
+    printf("main: Unable to start scheduler! RD: %d UD: %d", read_data_status,
            update_display_status);
     return -1;
   }
