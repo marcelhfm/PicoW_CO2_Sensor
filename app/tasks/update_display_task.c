@@ -9,11 +9,12 @@
 
 #include "../ssd1306/display.h"
 #include "../ssd1306/framebuffer.h"
+#include "cyw43.h"
 #include "pico/cyw43_arch.h"
 
-extern QueueHandle_t queue;
+extern QueueHandle_t display_queue;
 
-void draw_checkmark(FrameBuffer* fb, int x, int y, enum WriteMode wm) {
+void draw_checkmark(FrameBuffer *fb, int x, int y, enum WriteMode wm) {
   display_set_pixel(fb, x + 0, y + 5, wm);
   display_set_pixel(fb, x + 1, y + 6, wm);
   display_set_pixel(fb, x + 2, y + 7, wm);
@@ -24,14 +25,14 @@ void draw_checkmark(FrameBuffer* fb, int x, int y, enum WriteMode wm) {
   display_set_pixel(fb, x + 7, y + 2, wm);
 }
 
-void draw_cross(FrameBuffer* fb, int x, int y, enum WriteMode wm) {
+void draw_cross(FrameBuffer *fb, int x, int y, enum WriteMode wm) {
   for (int i = 0; i < 8; ++i) {
     display_set_pixel(fb, x + i, y + i, wm);
     display_set_pixel(fb, x + 7 - i, y + i, wm);
   }
 }
 
-void update_display(DisplayInfo* display_info, FrameBuffer* fb,
+void update_display(DisplayInfo *display_info, FrameBuffer *fb,
                     enum WriteMode wm, enum Rotation rot) {
   fb_clear(fb);
 
@@ -108,17 +109,39 @@ void update_display(DisplayInfo* display_info, FrameBuffer* fb,
 enum STATUS wifi_status() {
   int status = cyw43_tcpip_link_status(&cyw43_state, CYW43_ITF_STA);
 
+  switch (status) {
+  case CYW43_LINK_DOWN:
+    printf("update_display_task: wifi_status: Wifi down.\n");
+    break;
+  case CYW43_LINK_JOIN:
+    printf("update_display_task: wifi_status: Connected to wifi.\n");
+    break;
+  case CYW43_LINK_NOIP:
+    printf("update_display_task: wifi_status: Connected to wifi, but no IP "
+           "address.\n");
+    break;
+  case CYW43_LINK_UP:
+    break;
+  case CYW43_LINK_FAIL:
+    printf("update_display_task: wifi_status: Connection failed.\n");
+    break;
+  case CYW43_LINK_NONET:
+    printf("update_display_task: wifi_status: No matching SSID found.\n");
+    break;
+  case CYW43_LINK_BADAUTH:
+    printf("update_display_task: wifi_status: Auth failure.\n");
+    break;
+  }
+
   if (status != CYW43_LINK_UP) {
     return STATUS_GOOD;
-  } else {
-    printf("wifi_status: Wifi error: %d", status);
-    return STATUS_BAD;
   }
+  return STATUS_BAD;
 }
 
-void update_display_task(void* task_params) {
+void update_display_task(void *task_params) {
   printf("Hello from update_display_task!\n");
-  update_display_params* params = (update_display_params*)task_params;
+  update_display_params *params = (update_display_params *)task_params;
 
   // Other vars
   uint16_t co2 = 0;
@@ -126,11 +149,11 @@ void update_display_task(void* task_params) {
   DisplayInfo display_info;
   display_info.wifi_status = STATUS_GOOD;
   display_info.sensor_status = STATUS_GOOD;
-  display_info.co2_measurement = 0;  // Temp value
+  display_info.co2_measurement = 0; // Temp value
 
   update_display(&display_info, params->fb, params->wm, params->rot);
   while (1) {
-    if (xQueueReceive(queue, &co2, portMAX_DELAY) == pdPASS) {
+    if (xQueueReceive(display_queue, &co2, portMAX_DELAY) == pdPASS) {
       display_info.wifi_status = wifi_status();
       display_info.co2_measurement = co2;
 

@@ -11,6 +11,7 @@ add_executable(${APP_NAME}
   ssd1306/display.c
   tasks/update_display_task.c
   tasks/read_data_task.c
+  tasks/network_task.c
   i2c/i2c.c
   scd40/scd40.c
   )
@@ -23,6 +24,7 @@ target_compile_definitions(${APP_NAME} PRIVATE
 
 target_link_libraries(${APP_NAME} LINK_PUBLIC
   pico_stdlib
+  pico_lwip_iperf
   hardware_i2c
   hardware_adc
   FreeRTOS
