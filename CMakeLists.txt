@@ -25,7 +25,7 @@ project(${PROJECT_NAME}
 
   pico_sdk_init()
 
-  add_library(FreeRTOS STATIC
+add_library(FreeRTOS STATIC
     ${FREERTOS_SRC_DIRECTORY}/event_groups.c
     ${FREERTOS_SRC_DIRECTORY}/list.c
     ${FREERTOS_SRC_DIRECTORY}/queue.c
