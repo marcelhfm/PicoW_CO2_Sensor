@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <task.h>
 
+#include "hardware/watchdog.h"
 #include "i2c/i2c.h"
 #include "projdefs.h"
 #include "ssd1306/display.h"
@@ -20,6 +21,12 @@ TaskHandle_t network_task_handle = NULL;
 
 int main() {
   stdio_init_all();
+
+  if (watchdog_caused_reboot()) {
+    printf("Rebooted by Watchdog!\n");
+  } else {
+    printf("Clean boot\n");
+  }
 
   sleep_ms(2000); // Wait for serial_port to be initialized
 
