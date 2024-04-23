@@ -1,4 +1,5 @@
 #include "cyw43_ll.h"
+#include "hardware/watchdog.h"
 #include "lwip/err.h"
 #include "lwip/ip4_addr.h"
 #include "lwip/tcpbase.h"
@@ -14,6 +15,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <task.h>
+
+#define WATCHDOG_TIMEOUT_MS 10000 // 10s
 
 extern QueueHandle_t network_queue;
 
@@ -47,7 +50,6 @@ static void tcp_client_init() {
 
 static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb,
                                     err_t err) {
-  printf("network_task: Attempting to connect...\n");
   if (err == ERR_OK) {
     tcp_sent(tpcb, tcp_sent_callback);
     tcp_err(tpcb, tcp_error_callback);
@@ -117,12 +119,16 @@ void network_task() {
   printf("network_task: Successfully connected to wifi!\n");
 
   tcp_client_init();
+  watchdog_enable(WATCHDOG_TIMEOUT_MS, 1);
 
   measurements_t data;
   char buffer[100];
 
   while (1) {
+    watchdog_update();
     if (xQueueReceive(network_queue, &data, portMAX_DELAY) == pdPASS) {
+      watchdog_update();
+
       if (snprintf(buffer, sizeof(buffer), "1,%d,%d,%d\n", data.co2, data.temp,
                    data.humidity) >= sizeof(buffer)) {
         printf("network_task: Buffer overflow detected!\n");
