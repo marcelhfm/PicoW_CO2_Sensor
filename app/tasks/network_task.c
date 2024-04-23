@@ -32,7 +32,7 @@ static void tcp_client_init() {
     return;
   }
 
-  IP4_ADDR(&server_ip, 192, 168, 10, 21);
+  IP4_ADDR(&server_ip, 192, 168, 11, 30);
   printf("network_task: Attempting to bind and connect to server at %s:%d\n",
          ip4addr_ntoa(&server_ip), SERVER_PORT);
 
