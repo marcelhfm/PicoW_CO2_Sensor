@@ -19,11 +19,26 @@
 #define WATCHDOG_TIMEOUT_MS 10000 // 10s
 
 extern QueueHandle_t network_queue;
+extern TaskHandle_t update_display_handle;
 
 static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len);
 static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err);
+static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p,
+                               err_t err);
 static void tcp_error_callback(void *arg, err_t err);
 static void try_tcp_send(struct tcp_pcb *tpcb, const char *data);
+
+enum Commands parse_command(const char *message) {
+  int command = atoi(message);
+  switch (command) {
+  case CMD_DISPLAY_OFF:
+    return CMD_DISPLAY_OFF;
+  case CMD_DISPLAY_ON:
+    return CMD_DISPLAY_ON;
+  default:
+    return CMD_NONE;
+  }
+}
 
 static struct tcp_pcb *tcp_pcb;
 
@@ -52,6 +67,7 @@ static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb,
                                     err_t err) {
   if (err == ERR_OK) {
     tcp_sent(tpcb, tcp_sent_callback);
+    tcp_recv(tpcb, tcp_recv_callback);
     tcp_err(tpcb, tcp_error_callback);
 
     return ERR_OK;
@@ -79,6 +95,39 @@ static void tcp_error_callback(void *arg, err_t err) {
 
   vTaskDelay(pdMS_TO_TICKS(5000));
   tcp_client_init();
+}
+
+static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p,
+                               err_t err) {
+  if (p == NULL) {
+    printf("network_task: Connection was closed.\n");
+    tcp_close(tpcb);
+    return ERR_ABRT;
+  } else if (err == ERR_OK) {
+    char *received_data = (char *)p->payload;
+
+    received_data[p->len] = '\0';
+    enum Commands cmd = parse_command(received_data);
+
+    switch (cmd) {
+    case CMD_DISPLAY_OFF:
+      printf("network_task: Received CMD_DISPLAY_OFF\n");
+      xTaskNotify(update_display_handle, cmd, eSetValueWithOverwrite);
+      break;
+    case CMD_DISPLAY_ON:
+      printf("network_task: Received CMD_DISPLAY_ON\n");
+      xTaskNotify(update_display_handle, cmd, eSetValueWithOverwrite);
+      break;
+    default:
+      printf("network_task: Received unknown command\n");
+      break;
+    }
+
+    tcp_recved(tpcb, p->tot_len);
+    pbuf_free(p);
+  }
+
+  return ERR_OK;
 }
 
 static void try_tcp_send(struct tcp_pcb *tpcb, const char *data) {

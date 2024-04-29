@@ -7,10 +7,12 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../main.h"
 #include "../ssd1306/display.h"
 #include "../ssd1306/framebuffer.h"
 #include "cyw43.h"
 #include "pico/cyw43_arch.h"
+#include "portmacro.h"
 
 extern QueueHandle_t display_queue;
 
@@ -133,7 +135,7 @@ enum STATUS wifi_status() {
     break;
   }
 
-  if (status != CYW43_LINK_UP) {
+  if (status == CYW43_LINK_UP || status == CYW43_LINK_NOIP) {
     return STATUS_GOOD;
   }
   return STATUS_BAD;
@@ -152,7 +154,14 @@ void update_display_task(void *task_params) {
   display_info.co2_measurement = 0; // Temp value
 
   update_display(&display_info, params->fb, params->wm, params->rot);
+  uint32_t receivedCommand;
+
   while (1) {
+    if (xTaskNotifyWait(0x00, ULONG_MAX, &receivedCommand, portMAX_DELAY) ==
+        pdPASS) {
+      printf("update_display_task: Received command %d\n", receivedCommand);
+    }
+
     if (xQueueReceive(display_queue, &co2, portMAX_DELAY) == pdPASS) {
       display_info.wifi_status = wifi_status();
       display_info.co2_measurement = co2;

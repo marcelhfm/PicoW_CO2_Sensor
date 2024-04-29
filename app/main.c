@@ -6,6 +6,7 @@
 
 #include "hardware/watchdog.h"
 #include "i2c/i2c.h"
+#include "pico/stdio.h"
 #include "projdefs.h"
 #include "ssd1306/display.h"
 #include "ssd1306/ssd1306.h"
@@ -57,7 +58,6 @@ int main() {
       xTaskCreate(update_display_task, "UPDATE_DISPLAY_TASK", 4112,
                   (void *)&ud_params, 1, &update_display_handle);
 
-  // Create network task
   BaseType_t network_task_status = xTaskCreate(
       network_task, "NETWORK_TASK", 2056, NULL, 1, &network_task_handle);
 
