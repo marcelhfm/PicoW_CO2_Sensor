@@ -22,10 +22,9 @@ void oled_command(uint8_t command) {
   } else if (retval < 0) {
     printf("oled_command: I2C transaction error occurred: %d\n", retval);
   } else if (retval != 2) {
-    printf(
-        "oled_command: Mismatch in the number of bytes send. Sent: %d, "
-        "Expected: %zu\n",
-        retval, 2);
+    printf("oled_command: Mismatch in the number of bytes send. Sent: %d, "
+           "Expected: %zu\n",
+           retval, 2);
   }
 }
 
@@ -49,23 +48,29 @@ void oled_init() {
   oled_command(0xFF);
   oled_command(CMD_NORMAL_DISPLAY);
   oled_command(CMD_SET_MULTIPLEX);
-  oled_command(0x3F);  // 1/64 duty (63)
+  oled_command(0x3F); // 1/64 duty (63)
   oled_command(CMD_SET_DISPLAY_OFFSET);
-  oled_command(0x00);  // no offset
+  oled_command(0x00); // no offset
   oled_command(CMD_SET_DISPLAY_CLOCK_DIV);
-  oled_command(0x80);  // the suggested ratio 0x80
+  oled_command(0x80); // the suggested ratio 0x80
   oled_command(CMD_SET_PRECHARGE);
   oled_command(0x22);
   oled_command(CMD_SET_COM_PINS);
   oled_command(0x12);
   oled_command(CMD_SET_VCOM_DESELECT);
-  oled_command(0x40);  // lowest / dimmest
+  oled_command(0x40); // lowest / dimmest
   oled_command(CMD_CHARGE_PUMP);
-  oled_command(0x14);  // Enable charge pump
+  oled_command(0x14); // Enable charge pump
   oled_command(CMD_DISPLAY_ALL_ON_RESUME);
   oled_command(CMD_DISPLAY_ON);
 
   printf("oled_init: Done\n");
+}
+
+void oled_set_brightness(uint8_t brightness) {
+  printf("oled: Setting brightness to %d\n", brightness);
+  oled_command(CMD_SET_CONTRAST);
+  oled_command(brightness);
 }
 
 void set_page_start(uint8_t start) { oled_command(0xB0 | (start & 0x07)); }
@@ -75,7 +80,7 @@ void set_column(uint8_t col) {
   oled_command(0x10 | ((col >> 4) & 0x0F));
 }
 
-void send_data(const uint8_t* data, size_t length) {
+void send_data(const uint8_t *data, size_t length) {
   uint8_t data_with_control[length + 1];
   data_with_control[0] = 0x40;
   memcpy(data_with_control + 1, data, length);

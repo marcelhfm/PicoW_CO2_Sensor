@@ -41,11 +41,13 @@
 #define CMD_COL_REMAP_ON 0xC8
 #define CMD_COM_REMAP_OFF 0xA0
 #define CMD_COM_REMAP_ON 0xA1
+#define CMD_CONTRAST 0x81
 
 void oled_command(uint8_t command);
 void oled_init();
-void oled_string(char* message);
+void oled_string(char *message);
 void flash_display(bool invert);
 void clear_screen();
-void send_data(const uint8_t* data, size_t length);
+void oled_set_brightness(uint8_t brightness);
+void send_data(const uint8_t *data, size_t length);
 #endif
