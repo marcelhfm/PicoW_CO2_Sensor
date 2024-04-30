@@ -10,6 +10,7 @@
 #include "../main.h"
 #include "../ssd1306/display.h"
 #include "../ssd1306/framebuffer.h"
+#include "../ssd1306/ssd1306.h"
 #include "cyw43.h"
 #include "pico/cyw43_arch.h"
 #include "portmacro.h"
@@ -159,7 +160,19 @@ void update_display_task(void *task_params) {
   while (1) {
     if (xTaskNotifyWait(0x00, ULONG_MAX, &receivedCommand, portMAX_DELAY) ==
         pdPASS) {
-      printf("update_display_task: Received command %d\n", receivedCommand);
+      switch (receivedCommand) {
+      case 2:
+        printf("update_display_task: Received CMD_DISPLAY_ON\n");
+        oled_set_brightness(0xFF);
+        break;
+      case 1:
+        printf("update_display_task: Received CMD_DISPLAY_OFF\n");
+        oled_set_brightness(0);
+        break;
+      default:
+        printf("update_display_task: Received unknown command: %d\n",
+               receivedCommand);
+      }
     }
 
     if (xQueueReceive(display_queue, &co2, portMAX_DELAY) == pdPASS) {
