@@ -158,8 +158,8 @@ void update_display_task(void *task_params) {
   uint32_t receivedCommand;
 
   while (1) {
-    if (xTaskNotifyWait(0x00, ULONG_MAX, &receivedCommand, portMAX_DELAY) ==
-        pdPASS) {
+    if (xTaskNotifyWait(0x00, ULONG_MAX, &receivedCommand,
+                        pdMS_TO_TICKS(500)) == pdPASS) {
       switch (receivedCommand) {
       case 2:
         printf("update_display_task: Received CMD_DISPLAY_ON\n");
