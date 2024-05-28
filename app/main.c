@@ -2,6 +2,7 @@
 #include <FreeRTOS.h>
 #include <queue.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <task.h>
 
 #include "hardware/watchdog.h"
