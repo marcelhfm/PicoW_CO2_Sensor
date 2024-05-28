@@ -14,15 +14,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Clang
-        run: sudo apt-get update && sudo apt-get install -y clang
+      - name: Set up dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake make python3
 
-      - name: Install scan-build
-        run: sudo apt-get install -y clang-tools
+      - name: Set up Pico SDK
+        run: |
+          git clone --depth=1 https://github.com/raspberrypi/pico-sdk.git
+          cd pico-sdk
+          git submodule update --init
+          echo "export PICO_SDK_PATH=$(pwd)" >> $GITHUB_ENV
+          echo "export PICO_BOARD=pico_w" >> $GITHUB_ENV
 
       - name: Build and analyze
+        env:
+          PICO_SDK_PATH: ${{ env.PICO_SDK_PATH }}
+          PICO_BOARD: pico_w
         run: |
-          mkdir build
+          mkdir -p build
           cd build
           scan-build cmake ..
           scan-build make
