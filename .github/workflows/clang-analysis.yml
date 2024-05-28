@@ -19,21 +19,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y clang clang-tools cmake make python3
 
-      - name: Set up Pico SDK
-        run: |
-          git clone --depth=1 https://github.com/raspberrypi/pico-sdk.git
-          cd pico-sdk
-          git submodule update --init
-          echo "export PICO_SDK_PATH=$(pwd)" >> $GITHUB_ENV
-          echo "export PICO_BOARD=pico_w" >> $GITHUB_ENV
-
       - name: Build and analyze
         env:
-          PICO_SDK_PATH: ${{ env.PICO_SDK_PATH }}
-          PICO_BOARD: pico_w
         run: |
           mkdir -p build
           cd build
+          export PICO_SDK_FETCH_FROM_GIT=on
+          export PICO_BOARD=pico_w
           scan-build cmake ..
           scan-build make
 
