@@ -23,13 +23,13 @@ TaskHandle_t network_task_handle = NULL;
 int main() {
   stdio_init_all();
 
+  sleep_ms(2000); // Wait for serial_port to be initialized
+
   if (watchdog_caused_reboot()) {
     printf("Rebooted by Watchdog!\n");
   } else {
     printf("Clean boot\n");
   }
-
-  sleep_ms(2000); // Wait for serial_port to be initialized
 
   // Init display
   init_i2c();

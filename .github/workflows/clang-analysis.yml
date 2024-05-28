@@ -1,0 +1,34 @@
+name: Clang Static Analysis
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  clang-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@2
+
+      - name: Install Clang
+        run: sudo apt-get update && sudo apt-get install -y clang
+
+      - name: Install scan-build
+        run: sudo apt-get install -y clang-tools
+
+      - name: Build and analyze
+        run: |
+          mkdir build
+          cd build
+          scan-build cmake ..
+          scan-build make
+
+      - name: Upload scan-build results
+        uses: actions/upload-artifact@v2
+        with:
+          name: scan-build-results
+          path: build/scan-build*
