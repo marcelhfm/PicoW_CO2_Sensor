@@ -12,9 +12,9 @@
 #include "../ssd1306/framebuffer.h"
 #include "../ssd1306/ssd1306.h"
 #include "cyw43.h"
-#include "pico/cyw43_arch.h"
 #include "portmacro.h"
 
+extern bool display_on;
 extern QueueHandle_t display_queue;
 
 void draw_checkmark(FrameBuffer *fb, int x, int y, enum WriteMode wm) {
@@ -114,25 +114,25 @@ enum STATUS wifi_status() {
 
   switch (status) {
   case CYW43_LINK_DOWN:
-    printf("update_display_task: wifi_status: Wifi down.\n");
+    DEBUG_LOG("update_display_task: wifi_status: Wifi down.\n");
     break;
   case CYW43_LINK_JOIN:
-    printf("update_display_task: wifi_status: Connected to wifi.\n");
+    DEBUG_LOG("update_display_task: wifi_status: Connected to wifi.\n");
     break;
   case CYW43_LINK_NOIP:
-    printf("update_display_task: wifi_status: Connected to wifi, but no IP "
-           "address.\n");
+    DEBUG_LOG("update_display_task: wifi_status: Connected to wifi, but no IP "
+              "address.\n");
     break;
   case CYW43_LINK_UP:
     break;
   case CYW43_LINK_FAIL:
-    printf("update_display_task: wifi_status: Connection failed.\n");
+    DEBUG_LOG("update_display_task: wifi_status: Connection failed.\n");
     break;
   case CYW43_LINK_NONET:
-    printf("update_display_task: wifi_status: No matching SSID found.\n");
+    DEBUG_LOG("update_display_task: wifi_status: No matching SSID found.\n");
     break;
   case CYW43_LINK_BADAUTH:
-    printf("update_display_task: wifi_status: Auth failure.\n");
+    DEBUG_LOG("update_display_task: wifi_status: Auth failure.\n");
     break;
   }
 
@@ -143,11 +143,12 @@ enum STATUS wifi_status() {
 }
 
 void update_display_task(void *task_params) {
-  printf("Hello from update_display_task!\n");
+  DEBUG_LOG("Hello from update_display_task!\n");
   update_display_params *params = (update_display_params *)task_params;
 
   // Other vars
   uint16_t co2 = 0;
+  display_on = true; // After display init display will be on by default
 
   DisplayInfo display_info;
   display_info.wifi_status = STATUS_GOOD;
@@ -162,16 +163,18 @@ void update_display_task(void *task_params) {
                         pdMS_TO_TICKS(500)) == pdPASS) {
       switch (receivedCommand) {
       case 2:
-        printf("update_display_task: Received CMD_DISPLAY_ON\n");
+        DEBUG_LOG("update_display_task: Received CMD_DISPLAY_ON\n");
         oled_set_brightness(0xFF);
+        display_on = true;
         break;
       case 1:
-        printf("update_display_task: Received CMD_DISPLAY_OFF\n");
+        DEBUG_LOG("update_display_task: Received CMD_DISPLAY_OFF\n");
         oled_set_brightness(0);
+        display_on = false;
         break;
       default:
-        printf("update_display_task: Received unknown command: %d\n",
-               receivedCommand);
+        DEBUG_LOG("update_display_task: Received unknown command: %d\n",
+                  receivedCommand);
       }
     }
 

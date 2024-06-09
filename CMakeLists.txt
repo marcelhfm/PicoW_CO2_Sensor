@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PROJECT_NAME "picow_co2_sensor")
 set(BUILD_NUMBER "1")
 
@@ -10,11 +10,8 @@ set(APP_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/app")
 
 add_compile_definitions($<$<CONFIG:Debug>:DEBUG=1>)
 
-#set(ENV{PICO_SDK_PATH} "${CMAKE_SOURCE_DIR/../pico/pico-sdk}")
-#set(ENV{PICO_BOARD} "pico_w")
-
 set(FREERTOS_CFG_DIRECTORY "${CMAKE_SOURCE_DIR}/config")
-set(FREERTOS_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/FreeRTOS-Kernel")
+set(FREERTOS_SRC_DIRECTORY "${CMAKE_SOURCE_DIR}/lib/FreeRTOS-Kernel")
 
 include(pico_sdk_import.cmake)
 
@@ -24,6 +21,12 @@ project(${PROJECT_NAME}
     )
 
   pico_sdk_init()
+
+option(ENABLE_DEBUG_LOGS "Enable debug logging" OFF)
+
+if (ENABLE_DEBUG_LOGS)
+    add_definitions(-DENABLE_DEBUG_LOGS)
+endif()
 
 add_library(FreeRTOS STATIC
     ${FREERTOS_SRC_DIRECTORY}/event_groups.c
