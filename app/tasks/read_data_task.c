@@ -9,7 +9,6 @@
 #include <task.h>
 
 #include "../scd40/scd40.h"
-#include "pico/stdlib.h"
 
 extern QueueHandle_t display_queue;
 extern QueueHandle_t network_queue;
@@ -17,14 +16,14 @@ extern QueueHandle_t network_queue;
 const TickType_t read_data_delay = 5000 / portTICK_PERIOD_MS;
 
 void read_data_task() {
-  printf("Hello from read_data_task!\n");
+  DEBUG_LOG("Hello from read_data_task!\n");
 
   measurements_t data;
 
   int16_t retval = scd40_init();
 
   if (retval != 0) {
-    printf("read_data_task: Error initializing task: %i\n", retval);
+    DEBUG_LOG("read_data_task: Error initializing task: %i\n", retval);
     return;
   }
 
@@ -38,25 +37,26 @@ void read_data_task() {
     retval = scd40_get_data_ready_flag(&data_ready_flag);
 
     if (retval != 0) {
-      printf("read_data_task: Error executing get_data_ready_flag: %i\n",
-             retval);
+      DEBUG_LOG("read_data_task: Error executing get_data_ready_flag: %i\n",
+                retval);
       vTaskDelay(read_data_delay / 5); // 1000ms
       continue;
     }
     if (!data_ready_flag) {
-      printf("read_data_task: Data was not ready...\n");
+      DEBUG_LOG("read_data_task: Data was not ready...\n");
       vTaskDelay(read_data_delay / 5); // 1000ms
       continue;
     }
 
     retval = scd40_read_measurement(&co2, &temp_mc, &humidity_m_percent_rh);
     if (retval != 0) {
-      printf("read_data_task: error executing read_measurement: %i\n", retval);
+      DEBUG_LOG("read_data_task: error executing read_measurement: %i\n",
+                retval);
     } else if (co2 == 0) {
-      printf("read_data_task: invalid sample detected, skipping.\n");
+      DEBUG_LOG("read_data_task: invalid sample detected, skipping.\n");
     } else {
-      printf("read_data_task: C02: %u; Temp: %i; Humidity Percent: %i\n", co2,
-             temp_mc, humidity_m_percent_rh);
+      DEBUG_LOG("read_data_task: C02: %u; Temp: %i; Humidity Percent: %i\n",
+                co2, temp_mc, humidity_m_percent_rh);
 
       data.co2 = co2;
       data.temp = temp_mc;

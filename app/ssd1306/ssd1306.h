@@ -1,11 +1,10 @@
 #ifndef ssd1306_h
 #define ssd1306_h
 
+#include "pico/types.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
-
-#include "pico/stdio.h"
 
 // Commands
 #define CMD_SET_CONTRAST 0x81
@@ -13,8 +12,8 @@
 #define CMD_DISPLAY_ALL_ON 0xA5
 #define CMD_NORMAL_DISPLAY 0xA6
 #define CMD_INVERSE_DISPLAY 0xA7
-#define CMD_DISPLAY_OFF 0xAE
-#define CMD_DISPLAY_ON 0xAF
+#define CMD_SSD_DISPLAY_OFF 0xAE
+#define CMD_SSD_DISPLAY_ON 0xAF
 #define CMD_SET_DISPLAY_OFFSET 0xD3
 #define CMD_SET_COM_PINS 0xDA
 #define CMD_SET_VCOM_DESELECT 0xDB

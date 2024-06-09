@@ -38,7 +38,7 @@
 #include <task.h>
 
 #include "../i2c/i2c.h"
-#include "pico/stdlib.h"
+#include "../main.h"
 
 uint16_t common_bytes_to_uint16_t(const uint8_t *bytes) {
   return (uint16_t)bytes[0] << 8 | (uint16_t)bytes[1];
@@ -145,26 +145,26 @@ int16_t scd40_init() {
   retval = stop_periodic_measurement();
 
   if (retval != 0) {
-    printf("scd40_init: error stopping periodic measurement: %i\n", retval);
+    DEBUG_LOG("scd40_init: error stopping periodic measurement: %i\n", retval);
     return retval;
   }
 
   retval = reinit();
   if (retval != 0) {
-    printf("scd40_init: error reinitializing sensor: %i\n", retval);
+    DEBUG_LOG("scd40_init: error reinitializing sensor: %i\n", retval);
     return retval;
   }
 
-  retval = set_altitude(482);  // meters
+  retval = set_altitude(482); // meters
 
   if (retval != 0) {
-    printf("scd40_init: error setting altitude: %i\n", retval);
+    DEBUG_LOG("scd40_init: error setting altitude: %i\n", retval);
     return retval;
   }
 
   retval = start_periodic_measurement();
   if (retval != 0) {
-    printf("scd40_init: error starting periodic measurement: %i\n", retval);
+    DEBUG_LOG("scd40_init: error starting periodic measurement: %i\n", retval);
     return retval;
   }
 
