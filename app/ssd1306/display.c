@@ -2,17 +2,17 @@
 
 #include <stdio.h>
 
+#include "../main.h"
 #include "font8x8_basic.h"
-#include "pico/stdio.h"
 #include "ssd1306.h"
 
 #define WIDTH 128
 #define HEIGHT 64
 
-void display_set_pixel(FrameBuffer* fb, int16_t x, int16_t y,
+void display_set_pixel(FrameBuffer *fb, int16_t x, int16_t y,
                        enum WriteMode mode) {
   if ((x < 0) || (x >= WIDTH) || (y < 0) || (y >= HEIGHT)) {
-    printf("display_set_pixel: Coordinates out of bounds.\n");
+    DEBUG_LOG("display_set_pixel: Coordinates out of bounds.\n");
     return;
   }
 
@@ -27,13 +27,13 @@ void display_set_pixel(FrameBuffer* fb, int16_t x, int16_t y,
   }
 }
 
-void display_send_buffer(FrameBuffer* fb) {
+void display_send_buffer(FrameBuffer *fb) {
   oled_command(CMD_PAGE_ADDR);
-  oled_command(0x00);  // From min
-  oled_command(0x07);  // To max
+  oled_command(0x00); // From min
+  oled_command(0x07); // To max
   oled_command(CMD_COL_ADDR);
-  oled_command(0x00);  // From min
-  oled_command(127);   // To max
+  oled_command(0x00); // From min
+  oled_command(127);  // To max
 
   send_data(fb->buffer, FB_SIZE);
 }
@@ -48,10 +48,10 @@ void display_set_orientation(bool orientation) {
   }
 }
 
-void display_draw_text(FrameBuffer* fb, const char* text, uint8_t x, uint8_t y,
+void display_draw_text(FrameBuffer *fb, const char *text, uint8_t x, uint8_t y,
                        enum WriteMode mode, enum Rotation rot) {
   if (!text) {
-    printf("display_draw_text: No text provided.\n");
+    DEBUG_LOG("display_draw_text: No text provided.\n");
     return;
   }
 
@@ -61,23 +61,23 @@ void display_draw_text(FrameBuffer* fb, const char* text, uint8_t x, uint8_t y,
 
   while (text[n] != '\0') {
     switch (rot) {
-      case deg0:
-        display_draw_char(fb, text[n], x + (n * font_width), y, mode, rot);
-        break;
-      case deg90:
-        display_draw_char(fb, text[n], x, y + (n * font_width), mode, rot);
-        break;
+    case deg0:
+      display_draw_char(fb, text[n], x + (n * font_width), y, mode, rot);
+      break;
+    case deg90:
+      display_draw_char(fb, text[n], x, y + (n * font_width), mode, rot);
+      break;
     }
 
     n++;
   }
 }
 
-void display_draw_char(FrameBuffer* fb, char c, uint8_t anchor_x,
+void display_draw_char(FrameBuffer *fb, char c, uint8_t anchor_x,
                        uint8_t anchor_y, enum WriteMode mode,
                        enum Rotation rot) {
   if (c < 32) {
-    printf("display_draw_char: Invalid char %c", c);
+    DEBUG_LOG("display_draw_char: Invalid char %c", c);
     return;
   }
 
@@ -92,13 +92,13 @@ void display_draw_char(FrameBuffer* fb, char c, uint8_t anchor_x,
     for (uint8_t y = 0; y < font_height; y++) {
       if (font_8x8[seek] >> b_seek & 0b00000001) {
         switch (rot) {
-          case deg0:
-            display_set_pixel(fb, x + anchor_x, y + anchor_y, mode);
-            break;
-          case deg90:
-            display_set_pixel(fb, -y + anchor_x + font_height, x + anchor_y,
-                              mode);
-            break;
+        case deg0:
+          display_set_pixel(fb, x + anchor_x, y + anchor_y, mode);
+          break;
+        case deg90:
+          display_set_pixel(fb, -y + anchor_x + font_height, x + anchor_y,
+                            mode);
+          break;
         }
       }
       b_seek++;

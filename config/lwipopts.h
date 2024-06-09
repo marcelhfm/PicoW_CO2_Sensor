@@ -1,9 +1,6 @@
 #ifndef _LWIPOPTS_H
 #define _LWIPOPTS_H
 
-// Common settings used in most of the pico_w examples
-// (see https://www.nongnu.org/lwip/2_1_x/group__lwip__opts.html for details)
-
 // allow override in some examples
 #ifndef NO_SYS
 #define NO_SYS 1
