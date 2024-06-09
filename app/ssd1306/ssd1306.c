@@ -5,9 +5,8 @@
 #include <string.h>
 
 #include "../i2c/i2c.h"
-#include "hardware/gpio.h"
+#include "../main.h"
 #include "hardware/i2c.h"
-#include "pico/stdlib.h"
 
 #define OLED_ADDRESS 0x3C
 
@@ -18,13 +17,13 @@ void oled_command(uint8_t command) {
   int retval = i2c_write_blocking(I2C0_PORT, OLED_ADDRESS, data, 2, false);
 
   if (retval == PICO_ERROR_GENERIC) {
-    printf("oled_commnad: Error sending command to OLED display.\n");
+    DEBUG_LOG("oled_commnad: Error sending command to OLED display.\n");
   } else if (retval < 0) {
-    printf("oled_command: I2C transaction error occurred: %d\n", retval);
+    DEBUG_LOG("oled_command: I2C transaction error occurred: %d\n", retval);
   } else if (retval != 2) {
-    printf("oled_command: Mismatch in the number of bytes send. Sent: %d, "
-           "Expected: %zu\n",
-           retval, 2);
+    DEBUG_LOG("oled_command: Mismatch in the number of bytes send. Sent: %d, "
+              "Expected: %zu\n",
+              retval, 2);
   }
 }
 
@@ -37,8 +36,8 @@ void flash_display(bool invert) {
 }
 
 void oled_init() {
-  printf("oled_init: Initializing display...\n");
-  oled_command(CMD_DISPLAY_OFF);
+  DEBUG_LOG("oled_init: Initializing display...\n");
+  oled_command(CMD_SSD_DISPLAY_OFF);
   oled_command(CMD_SET_LOW_COLUMN);
   oled_command(CMD_SET_HIGH_COLUMN);
   oled_command(CMD_SET_START_LINE);
@@ -62,13 +61,13 @@ void oled_init() {
   oled_command(CMD_CHARGE_PUMP);
   oled_command(0x14); // Enable charge pump
   oled_command(CMD_DISPLAY_ALL_ON_RESUME);
-  oled_command(CMD_DISPLAY_ON);
+  oled_command(CMD_SSD_DISPLAY_ON);
 
-  printf("oled_init: Done\n");
+  DEBUG_LOG("oled_init: Done\n");
 }
 
 void oled_set_brightness(uint8_t brightness) {
-  printf("oled: Setting brightness to %d\n", brightness);
+  DEBUG_LOG("oled: Setting brightness to %d\n", brightness);
   oled_command(CMD_SET_CONTRAST);
   oled_command(brightness);
 }
@@ -88,11 +87,11 @@ void send_data(const uint8_t *data, size_t length) {
                                   length + 1, false);
 
   if (retval == PICO_ERROR_GENERIC) {
-    printf("send_data: Error sending data to OLED display.\n");
+    DEBUG_LOG("send_data: Error sending data to OLED display.\n");
   } else if (retval < 0) {
-    printf("send_data: I2C transaction error occurred: %d\n", retval);
+    DEBUG_LOG("send_data: I2C transaction error occurred: %d\n", retval);
   } else if (retval != length + 1) {
-    printf(
+    DEBUG_LOG(
         "send_data: Mismatch in the number of bytes sent. Sent: %d, Expected: "
         "%zu\n",
         retval, length + 1);

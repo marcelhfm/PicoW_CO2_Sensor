@@ -20,6 +20,7 @@
 
 extern QueueHandle_t network_queue;
 extern TaskHandle_t update_display_handle;
+extern bool display_on;
 
 static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len);
 static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err);
@@ -46,16 +47,16 @@ static void tcp_client_init() {
   ip_addr_t server_ip;
   tcp_pcb = tcp_new();
   if (!tcp_pcb) {
-    printf("Error creating PCB.\n");
+    DEBUG_LOG("Error creating PCB.\n");
     return;
   }
 
   IP4_ADDR(&server_ip, 192, 168, 11, 30);
-  printf("network_task: Attempting to bind and connect to server at %s:%d\n",
-         ip4addr_ntoa(&server_ip), SERVER_PORT);
+  DEBUG_LOG("network_task: Attempting to bind and connect to server at %s:%d\n",
+            ip4addr_ntoa(&server_ip), SERVER_PORT);
 
   if (tcp_bind(tcp_pcb, IP_ADDR_ANY, 0) != ERR_OK) {
-    printf("network_task: Error binding TCP.\n");
+    DEBUG_LOG("network_task: Error binding TCP.\n");
     tcp_abort(tcp_pcb);
     return;
   }
@@ -72,20 +73,20 @@ static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb,
 
     return ERR_OK;
   } else {
-    printf("network_task: Connection failed with error code %d\n", err);
+    DEBUG_LOG("network_task: Connection failed with error code %d\n", err);
     return err;
   }
 }
 
 static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
-  printf("network_task: Data sent Successfully.\n");
+  DEBUG_LOG("network_task: Data sent Successfully.\n");
   return ERR_OK;
 }
 
 static void tcp_error_callback(void *arg, err_t err) {
-  printf("network_task: TCP connection error %d encountered. Restoring "
-         "connection\n",
-         err);
+  DEBUG_LOG("network_task: TCP connection error %d encountered. Restoring "
+            "connection\n",
+            err);
 
   struct tcp_pcb *tpcb = (struct tcp_pcb *)arg;
   if (tpcb) {
@@ -100,7 +101,7 @@ static void tcp_error_callback(void *arg, err_t err) {
 static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p,
                                err_t err) {
   if (p == NULL) {
-    printf("network_task: Connection was closed.\n");
+    DEBUG_LOG("network_task: Connection was closed.\n");
     tcp_close(tpcb);
     return ERR_ABRT;
   } else if (err == ERR_OK) {
@@ -111,15 +112,15 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p,
 
     switch (cmd) {
     case CMD_DISPLAY_OFF:
-      printf("network_task: Received CMD_DISPLAY_OFF\n");
+      DEBUG_LOG("network_task: Received CMD_DISPLAY_OFF\n");
       xTaskNotify(update_display_handle, cmd, eSetValueWithOverwrite);
       break;
     case CMD_DISPLAY_ON:
-      printf("network_task: Received CMD_DISPLAY_ON\n");
+      DEBUG_LOG("network_task: Received CMD_DISPLAY_ON\n");
       xTaskNotify(update_display_handle, cmd, eSetValueWithOverwrite);
       break;
     default:
-      printf("network_task: Received unknown command\n");
+      DEBUG_LOG("network_task: Received unknown command\n");
       break;
     }
 
@@ -136,10 +137,10 @@ static void try_tcp_send(struct tcp_pcb *tpcb, const char *data) {
     if (err == ERR_OK) {
       tcp_output(tpcb);
     } else {
-      printf("network_task: Failed to send data: %d\n", err);
+      DEBUG_LOG("network_task: Failed to send data: %d\n", err);
     }
   } else {
-    printf("network_task: Connection lost, attempting reconnect...\n");
+    DEBUG_LOG("network_task: Connection lost, attempting reconnect...\n");
     tcp_client_init();
 
     vTaskDelay(pdMS_TO_TICKS(5000));
@@ -147,25 +148,25 @@ static void try_tcp_send(struct tcp_pcb *tpcb, const char *data) {
 }
 
 void network_task() {
-  printf("Hello from network_task!\n");
+  DEBUG_LOG("Hello from network_task!\n");
 
   if (cyw43_arch_init()) {
-    printf("network_task: Failed to initialize CYW43\n");
+    DEBUG_LOG("network_task: Failed to initialize CYW43\n");
     vTaskDelete(NULL);
   }
 
   cyw43_arch_enable_sta_mode();
 
-  printf("network_task: Connecting to WiFi %s and pwd %s\n", WIFI_SSID,
-         WIFI_PASSWORD);
+  DEBUG_LOG("network_task: Connecting to WiFi %s and pwd %s\n", WIFI_SSID,
+            WIFI_PASSWORD);
 
   while (cyw43_arch_wifi_connect_timeout_ms(
              WIFI_SSID, WIFI_PASSWORD, CYW43_AUTH_WPA2_AES_PSK, 30000) != 0) {
-    printf("network_task: Failed to connect to WiFi, retrying...\n");
+    DEBUG_LOG("network_task: Failed to connect to WiFi, retrying...\n");
     vTaskDelay(pdMS_TO_TICKS(5000));
   }
 
-  printf("network_task: Successfully connected to wifi!\n");
+  DEBUG_LOG("network_task: Successfully connected to wifi!\n");
 
   tcp_client_init();
   watchdog_enable(WATCHDOG_TIMEOUT_MS, 1);
@@ -178,9 +179,9 @@ void network_task() {
     if (xQueueReceive(network_queue, &data, portMAX_DELAY) == pdPASS) {
       watchdog_update();
 
-      if (snprintf(buffer, sizeof(buffer), "1,%d,%d,%d\n", data.co2, data.temp,
-                   data.humidity) >= sizeof(buffer)) {
-        printf("network_task: Buffer overflow detected!\n");
+      if (snprintf(buffer, sizeof(buffer), "1,%d,%d,%d,%d\n", data.co2,
+                   data.temp, data.humidity, display_on) >= sizeof(buffer)) {
+        DEBUG_LOG("network_task: Buffer overflow detected!\n");
       }
 
       try_tcp_send(tcp_pcb, buffer);
