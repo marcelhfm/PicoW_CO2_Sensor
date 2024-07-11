@@ -1,0 +1,905 @@
+network_task: Connecting to WiFi grrrk and pwd x-r-D7BXZ-PZLCCb
+network_task: Successfully connected to wifi!
+network_task: Attempting to bind and connect to server at 192.168.11.30:5001
+read_data_task: C02: 909; Temp: 30; Humidity Percent: 42
+network_task: Data sent Successfully.
+read_data_task: C02: 870; Temp: 30; Humidity Percent: 42
+network_task: Data sent Successfully.
+read_data_task: C02: 844; Temp: 29; Humidity Percent: 43
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 29; Humidity Percent: 44
+network_task: Data sent Successfully.
+read_data_task: C02: 847; Temp: 29; Humidity Percent: 45
+network_task: Data sent Successfully.
+read_data_task: C02: 845; Temp: 29; Humidity Percent: 45
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 28; Humidity Percent: 46
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 28; Humidity Percent: 46
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 28; Humidity Percent: 47
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 28; Humidity Percent: 47
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 28; Humidity Percent: 47
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 28; Humidity Percent: 48
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 28; Humidity Percent: 48
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 840; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 840; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 840; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 840; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 840; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 841; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 842; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 843; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 844; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 846; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 846; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 847; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 848; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 848; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 848; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 848; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 849; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 850; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 851; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 852; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 853; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 853; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 854; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 855; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 855; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 855; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 856; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 856; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 856; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 857; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 860; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 860; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 861; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 861; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 861; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 862; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 863; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 864; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 864; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 864; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 864; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 865; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 865; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 864; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 865; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 866; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 868; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 868; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 868; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 867; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 868; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 869; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 869; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 869; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 870; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 870; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 870; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 871; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 870; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 870; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 870; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 871; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 871; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 871; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 871; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 874; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 873; Temp: 26; Humidity Percent: 52
+
+*** PANIC ***
+
+pcb->snd_queuelen >= pbuf_clen(next->p)
+
+read_data_task: C02: 889; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 889; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 889; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 890; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 890; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 890; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 891; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 891; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 890; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 893; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 893; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 892; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 894; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 893; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 893; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 892; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 892; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 892; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 893; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 896; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 896; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 897; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 897; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 897; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 898; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 898; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 897; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 899; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 899; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 900; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 899; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 899; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 900; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 901; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 903; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 903; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 903; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 903; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 904; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 908; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 908; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 908; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 905; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 906; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 907; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+network_task: Successfully connected to wifi!
+network_task: Attempting to bind and connect to server at 192.168.11.30:5001
+read_data_task: C02: 918; Temp: 30; Humidity Percent: 41
+network_task: Data sent Successfully.
+read_data_task: C02: 917; Temp: 30; Humidity Percent: 42
+network_task: Data sent Successfully.
+read_data_task: C02: 917; Temp: 30; Humidity Percent: 43
+network_task: Data sent Successfully.
+read_data_task: C02: 914; Temp: 29; Humidity Percent: 43
+network_task: Data sent Successfully.
+read_data_task: C02: 923; Temp: 29; Humidity Percent: 45
+network_task: Data sent Successfully.
+read_data_task: C02: 916; Temp: 29; Humidity Percent: 45
+network_task: Data sent Successfully.
+read_data_task: C02: 917; Temp: 29; Humidity Percent: 46
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 28; Humidity Percent: 46
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 28; Humidity Percent: 46
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 28; Humidity Percent: 47
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 28; Humidity Percent: 47
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 28; Humidity Percent: 48
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 28; Humidity Percent: 48
+network_task: Data sent Successfully.
+read_data_task: C02: 917; Temp: 27; Humidity Percent: 48
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 49
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 918; Temp: 26; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 919; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 920; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 921; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 922; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 924; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 923; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 922; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 924; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 924; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 925; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 925; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 924; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 924; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 924; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 923; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 922; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 923; Temp: 26; Humidity Percent: 52
+
+*** PANIC ***
+
+pcb->snd_queuelen >= pbuf_clen(next->p)
+
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 50
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 51
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 27; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 959; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 959; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 959; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 963; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 963; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 963; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 964; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 965; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 964; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 964; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 965; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 965; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 966; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 966; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 967; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 967; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 968; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 971; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 971; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 971; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 971; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 970; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 970; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 969; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 968; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 968; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 965; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 965; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 965; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 963; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 962; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 961; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 960; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 959; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 959; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 954; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 951; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 950; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 950; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 949; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 948; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 948; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.
+read_data_task: C02: 947; Temp: 26; Humidity Percent: 52
+network_task: Data sent Successfully.

@@ -1,19 +1,21 @@
 #include "framebuffer.h"
 
-#include "../main.h"
+#include "../tasks/logging.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+const char *F_TAG = "FRAMEBUFFER";
+
 int fb_init(FrameBuffer *fb) {
   if (fb == 0) {
-    DEBUG_LOG("fb_init: fb is null!\n");
+    u_log(L_ERROR, F_TAG, "fb is null!\n");
     return -1;
   }
 
   fb->buffer = (unsigned char *)malloc(FB_SIZE);
   if (fb->buffer == 0) {
-    DEBUG_LOG("fb_init: Memory allocation failure!\n");
+    u_log(L_ERROR, F_TAG, "Memory allocation failure!\n");
   }
 
   return 0;
@@ -21,7 +23,7 @@ int fb_init(FrameBuffer *fb) {
 
 void fb_byte_or(FrameBuffer *fb, int n, unsigned char byte) {
   if (n > (FB_SIZE - 1)) {
-    DEBUG_LOG("fb_byte_or: Offset out of range!\n");
+    u_log(L_ERROR, F_TAG, "Offset out of range!\n");
   };
   fb->buffer[n] |= byte;
 }

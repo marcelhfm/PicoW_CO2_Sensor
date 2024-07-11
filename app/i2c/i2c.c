@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "../main.h"
+#include "../tasks/logging.h"
 #include "hardware/gpio.h"
 #include "hardware/i2c.h"
 
@@ -14,21 +14,23 @@
 #define I2C1_SDA_PIN 2
 #define I2C1_SCL_PIN 3
 
+const char *I_TAG = "I2C";
+
 int16_t i2c_write(i2c_inst_t *i2c, uint8_t addr, uint8_t *src, size_t len,
                   bool nostop) {
   int retval = i2c_write_blocking(i2c, addr, src, len, nostop);
 
   if (retval == PICO_ERROR_GENERIC) {
-    DEBUG_LOG("i2c_write: Error sending command to i2c device. \n");
+    u_log(L_ERROR, I_TAG, "Error sending command to i2c device. \n");
     return -1;
   } else if (retval < 0) {
-    DEBUG_LOG("i2c_write: I2C transaction error occurred: %d\n", retval);
+    u_log(L_ERROR, I_TAG, "I2C transaction error occurred: %d\n", retval);
     return -1;
   } else if (retval != len) {
-    DEBUG_LOG(
-        "i2c_write: Mismath in the number of bytes send. Sent: %d, Expected: "
-        "%zu",
-        retval, len);
+    u_log(L_ERROR, I_TAG,
+          "Mismatch in the number of bytes send. Sent: %d, Expected: "
+          "%zu",
+          retval, len);
     return -1;
   }
 
@@ -40,16 +42,17 @@ int16_t i2c_read(i2c_inst_t *i2c, uint8_t addr, uint8_t *dst, size_t len,
   int retval = i2c_read_blocking(i2c, addr, dst, len, nostop);
 
   if (retval == PICO_ERROR_GENERIC) {
-    DEBUG_LOG("i2c_read: Error sending command to i2c device. \n");
+    u_log(L_ERROR, I_TAG, "Error sending command to i2c device. \n");
     return -1;
   } else if (retval < 0) {
-    DEBUG_LOG("i2c_read: I2C transaction error occurred: %d\n", retval);
+    u_log(L_ERROR, I_TAG, "I2C transaction error occurred: %d\n", retval);
     return -1;
   } else if (retval != len) {
-    DEBUG_LOG("i2c_read: Mismath in the number of bytes received. Sent: %d, "
-              "Expected: "
-              "%zu",
-              retval, len);
+    u_log(L_ERROR, I_TAG,
+          "Mismatch in the number of bytes received. Sent: %d, "
+          "Expected: "
+          "%zu",
+          retval, len);
     return -1;
   }
 
@@ -57,7 +60,7 @@ int16_t i2c_read(i2c_inst_t *i2c, uint8_t addr, uint8_t *dst, size_t len,
 }
 
 void init_i2c() {
-  DEBUG_LOG("init_i2c: Initializing i2c...\n");
+  u_log(L_DEBUG, I_TAG, "Initializing i2c...\n");
   i2c_init(I2C0_PORT, 100 * 1000); // 100 kHz
 
   // SSD1306
@@ -71,11 +74,11 @@ void init_i2c() {
   gpio_set_function(I2C1_SCL_PIN, GPIO_FUNC_I2C);
 
   // i2c_set_slave_mode(I2C_PORT, false, 0);
-  DEBUG_LOG("init_i2c: Done\n");
+  u_log(L_DEBUG, I_TAG, "Done Initializing\n");
 }
 
 void i2c_scan() {
-  DEBUG_LOG("Scanning I2C0 bus...\n");
+  u_log(L_DEBUG, I_TAG, "Scanning I2C0 bus...\n");
   uint8_t address;
   uint8_t data;
 
@@ -84,20 +87,22 @@ void i2c_scan() {
     int result = i2c_write_blocking(I2C0_PORT, address, &data, 1, false);
 
     if (result == 1) {
-      DEBUG_LOG("I2C0 device detected at address 0x%02X Result: %d\n", address,
-                result);
+      u_log(L_INFO, I_TAG,
+            "I2C0 device detected at address 0x%02X Result: %d\n", address,
+            result);
     }
   }
 
-  DEBUG_LOG("Scanning I2C1 bus...\n");
+  u_log(L_DEBUG, I_TAG, "Scanning I2C1 bus...\n");
 
   for (address = 1; address < 128;
        address++) { // 7-bit addresses from 0x01 to 0x7F
     int result = i2c_write_blocking(I2C1_PORT, address, &data, 1, false);
 
     if (result == 1) {
-      DEBUG_LOG("I2C1 device detected at address 0x%02X Result: %d\n", address,
-                result);
+      u_log(L_INFO, I_TAG,
+            "I2C1 device detected at address 0x%02X Result: %d\n", address,
+            result);
     }
   }
 }

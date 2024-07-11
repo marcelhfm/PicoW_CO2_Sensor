@@ -12,6 +12,7 @@ add_executable(${APP_NAME}
   tasks/update_display_task.c
   tasks/read_data_task.c
   tasks/network_task.c
+  tasks/logging.c
   i2c/i2c.c
   scd40/scd40.c
   )
