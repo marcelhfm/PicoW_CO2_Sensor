@@ -7,12 +7,14 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../main.h"
 #include "../ssd1306/display.h"
 #include "../ssd1306/framebuffer.h"
 #include "../ssd1306/ssd1306.h"
 #include "cyw43.h"
+#include "logging.h"
 #include "portmacro.h"
+
+const char *D_TAG = "UPDATE_DISPLAY_TASK";
 
 extern bool display_on;
 extern QueueHandle_t display_queue;
@@ -114,25 +116,26 @@ enum STATUS wifi_status() {
 
   switch (status) {
   case CYW43_LINK_DOWN:
-    DEBUG_LOG("update_display_task: wifi_status: Wifi down.\n");
+    u_log(L_ERROR, D_TAG, "wifi_status: Wifi down.\n");
     break;
   case CYW43_LINK_JOIN:
-    DEBUG_LOG("update_display_task: wifi_status: Connected to wifi.\n");
+    u_log(L_INFO, D_TAG, "wifi_status: Connected to wifi.\n");
     break;
   case CYW43_LINK_NOIP:
-    DEBUG_LOG("update_display_task: wifi_status: Connected to wifi, but no IP "
-              "address.\n");
+    u_log(L_WARN, D_TAG,
+          "wifi_status: Connected to wifi, but no IP "
+          "address.\n");
     break;
   case CYW43_LINK_UP:
     break;
   case CYW43_LINK_FAIL:
-    DEBUG_LOG("update_display_task: wifi_status: Connection failed.\n");
+    u_log(L_ERROR, D_TAG, "wifi_status: Connection failed.\n");
     break;
   case CYW43_LINK_NONET:
-    DEBUG_LOG("update_display_task: wifi_status: No matching SSID found.\n");
+    u_log(L_WARN, D_TAG, "wifi_status: No matching SSID found.\n");
     break;
   case CYW43_LINK_BADAUTH:
-    DEBUG_LOG("update_display_task: wifi_status: Auth failure.\n");
+    u_log(L_ERROR, D_TAG, "wifi_status: Auth failure.\n");
     break;
   }
 
@@ -143,7 +146,7 @@ enum STATUS wifi_status() {
 }
 
 void update_display_task(void *task_params) {
-  DEBUG_LOG("Hello from update_display_task!\n");
+  u_log(L_DEBUG, D_TAG, "Hello from update_display_task!\n");
   update_display_params *params = (update_display_params *)task_params;
 
   // Other vars
@@ -163,18 +166,17 @@ void update_display_task(void *task_params) {
                         pdMS_TO_TICKS(500)) == pdPASS) {
       switch (receivedCommand) {
       case 2:
-        DEBUG_LOG("update_display_task: Received CMD_DISPLAY_ON\n");
+        u_log(L_INFO, D_TAG, "Received CMD_DISPLAY_ON\n");
         oled_set_brightness(0xFF);
         display_on = true;
         break;
       case 1:
-        DEBUG_LOG("update_display_task: Received CMD_DISPLAY_OFF\n");
+        u_log(L_INFO, D_TAG, "Received CMD_DISPLAY_OFF\n");
         oled_set_brightness(0);
         display_on = false;
         break;
       default:
-        DEBUG_LOG("update_display_task: Received unknown command: %d\n",
-                  receivedCommand);
+        u_log(L_WARN, D_TAG, "Received unknown command: %d\n", receivedCommand);
       }
     }
 

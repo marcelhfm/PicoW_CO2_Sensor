@@ -38,7 +38,9 @@
 #include <task.h>
 
 #include "../i2c/i2c.h"
-#include "../main.h"
+#include "../tasks/logging.h"
+
+const char *C_TAG = "SCD40";
 
 uint16_t common_bytes_to_uint16_t(const uint8_t *bytes) {
   return (uint16_t)bytes[0] << 8 | (uint16_t)bytes[1];
@@ -145,26 +147,26 @@ int16_t scd40_init() {
   retval = stop_periodic_measurement();
 
   if (retval != 0) {
-    DEBUG_LOG("scd40_init: error stopping periodic measurement: %i\n", retval);
+    u_log(L_ERROR, C_TAG, "error stopping periodic measurement: %i\n", retval);
     return retval;
   }
 
   retval = reinit();
   if (retval != 0) {
-    DEBUG_LOG("scd40_init: error reinitializing sensor: %i\n", retval);
+    u_log(L_ERROR, C_TAG, "error reinitializing sensor: %i\n", retval);
     return retval;
   }
 
   retval = set_altitude(482); // meters
 
   if (retval != 0) {
-    DEBUG_LOG("scd40_init: error setting altitude: %i\n", retval);
+    u_log(L_ERROR, C_TAG, "error setting altitude: %i\n", retval);
     return retval;
   }
 
   retval = start_periodic_measurement();
   if (retval != 0) {
-    DEBUG_LOG("scd40_init: error starting periodic measurement: %i\n", retval);
+    u_log(L_ERROR, C_TAG, "error starting periodic measurement: %i\n", retval);
     return retval;
   }
 
