@@ -2,17 +2,19 @@
 
 #include <stdio.h>
 
-#include "../main.h"
+#include "../tasks/logging.h"
 #include "font8x8_basic.h"
 #include "ssd1306.h"
 
 #define WIDTH 128
 #define HEIGHT 64
 
+const char *DI_LOG = "DISPLAY";
+
 void display_set_pixel(FrameBuffer *fb, int16_t x, int16_t y,
                        enum WriteMode mode) {
   if ((x < 0) || (x >= WIDTH) || (y < 0) || (y >= HEIGHT)) {
-    DEBUG_LOG("display_set_pixel: Coordinates out of bounds.\n");
+    u_log(L_WARN, DI_LOG, "Coordinates out of bounds.\n");
     return;
   }
 
@@ -51,7 +53,7 @@ void display_set_orientation(bool orientation) {
 void display_draw_text(FrameBuffer *fb, const char *text, uint8_t x, uint8_t y,
                        enum WriteMode mode, enum Rotation rot) {
   if (!text) {
-    DEBUG_LOG("display_draw_text: No text provided.\n");
+    u_log(L_WARN, DI_LOG, "No text provided.\n");
     return;
   }
 
@@ -77,7 +79,7 @@ void display_draw_char(FrameBuffer *fb, char c, uint8_t anchor_x,
                        uint8_t anchor_y, enum WriteMode mode,
                        enum Rotation rot) {
   if (c < 32) {
-    DEBUG_LOG("display_draw_char: Invalid char %c", c);
+    u_log(L_WARN, DI_LOG, "Invalid char %c", c);
     return;
   }
 

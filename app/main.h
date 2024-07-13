@@ -10,7 +10,7 @@ typedef struct measurements_t {
 enum Commands { CMD_NONE = 0, CMD_DISPLAY_OFF = 1, CMD_DISPLAY_ON = 2 };
 
 #ifdef ENABLE_DEBUG_LOGS
-#define DEBUG_LOG(fmt, args...) printf("DEBUG: " fmt "\n", ##args)
+#define DEBUG_LOG(fmt, args...) printf(fmt, ##args)
 #else
 #define DEBUG_LOG(fmt, args...) // Do nothing
 #endif
