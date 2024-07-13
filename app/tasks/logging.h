@@ -1,7 +1,7 @@
 #ifndef LOGGING_H
 #define LOGGING_H
 
-#define LOG_QUEUE_LENGTH 10
+#define LOG_QUEUE_LENGTH 25
 #define LOG_MESSAGE_MAX_LENGTH 256
 
 typedef enum { L_INFO, L_WARN, L_ERROR, L_DEBUG } log_level_t;
