@@ -91,6 +91,9 @@ int main() {
   ud_params.rot = rot;
 
   u_log(L_INFO, TAG, "Creating Tasks\n");
+  BaseType_t udp_log_status = xTaskCreate(udp_log_task, "UDP Log Task", 1024,
+                                          NULL, tskIDLE_PRIORITY, NULL);
+
   BaseType_t read_data_status = xTaskCreate(read_data_task, "READ_DATA_TASK",
                                             2056, NULL, 2, &read_data_handle);
 
@@ -100,9 +103,6 @@ int main() {
 
   BaseType_t network_task_status = xTaskCreate(
       network_task, "NETWORK_TASK", 2056, NULL, 1, &network_task_handle);
-
-  BaseType_t udp_log_status = xTaskCreate(udp_log_task, "UDP Log Task", 1024,
-                                          NULL, tskIDLE_PRIORITY, NULL);
   if (read_data_status == pdPASS && update_display_status == pdPASS &&
       udp_log_status == pdPASS) {
     // if (read_data_status == pdPASS && update_display_status == pdPASS &&
