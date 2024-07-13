@@ -97,4 +97,4 @@
 
 // ping_thread sets socket receive timeout, so enable this feature
 #define LWIP_SO_RCVTIMEO 1
-#endifendif
+#endif
